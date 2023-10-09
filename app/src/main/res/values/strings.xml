@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ANMP_160420113_Week4</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="student_id">Student ID\n</string>
+    <string name="student_name">Student Name</string>
+    <string name="date_birth">Date Birth</string>
+    <string name="student_phone">Phone Number</string>
+    <string name="save">Save Changes</string>
+    <string name="id">ID</string>
+    <string name="student_detail">Detail</string>
+</resources>
