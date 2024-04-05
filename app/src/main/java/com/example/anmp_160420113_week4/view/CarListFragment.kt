@@ -27,7 +27,7 @@ class CarListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<RecyclerView>(R.id.recyclerViewAircraft).apply {
+        view.findViewById<RecyclerView>(R.id.recyclerViewCar).apply {
             adapter = carListAdapter
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)

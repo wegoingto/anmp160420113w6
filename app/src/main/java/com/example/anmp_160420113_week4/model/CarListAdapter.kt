@@ -19,14 +19,18 @@ class CarListAdapter(
         val textCarModel: TextView
         val textCarYear: TextView
         val textCarFeatures: TextView
-        val textCarSpec: TextView
+        val textSpecEngine: TextView
+        val textSpecTransmission: TextView
+        val textSpecFuelType: TextView
 
 
         init {
             textCarModel = view.findViewById(R.id.textCarModel)
             textCarYear = view.findViewById(R.id.textCarYear)
-            textCarFeatures= view.findViewById(R.id.textAircraftCountry)
-            textCarSpec = view.findViewById(R.id.textEngine)
+            textCarFeatures= view.findViewById(R.id.textCarFeatures)
+            textSpecEngine = view.findViewById(R.id.textEngine)
+            textSpecTransmission = view.findViewById(R.id.textTransmission)
+            textSpecFuelType = view.findViewById(R.id.textFuelType)
 
         }
     }
@@ -48,7 +52,12 @@ class CarListAdapter(
             textCarModel.text = car.model
             textCarYear.text = car.year
             textCarFeatures.text = car.features.toString()
-            textCarSpec.text = car.specs.toString()
+            textSpecEngine.text =
+                "Engine: ${car.specs!!.engine}"
+            textSpecTransmission.text =
+                "Transmission: ${car.specs!!.transmission}"
+            textSpecFuelType.text =
+                "FuelType: ${car.specs!!.fuelType}"
         }
     }
 
