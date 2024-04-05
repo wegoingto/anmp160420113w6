@@ -9,4 +9,7 @@
     <string name="save">Save Changes</string>
     <string name="id">ID</string>
     <string name="student_detail">Detail</string>
+    <string name="performance">Performance</string>
+    <string name="features">Features</string>
+    <string name="specification">Specification</string>
 </resources>

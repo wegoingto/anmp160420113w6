@@ -19,4 +19,10 @@
         android:name="com.example.anmp_160420113_week4.view.StudentDetailFragment"
         android:label="fragment_student_detail"
         tools:layout="@layout/fragment_student_detail" />
+
+    <fragment
+        android:id="@+id/aircraftListFragment"
+        android:name="com.example.anmp_160420113_week4.view.CarListFragment"
+        android:label="fragment_aircraft_list"
+        tools:layout="@layout/fragment_car_list" />
 </navigation>

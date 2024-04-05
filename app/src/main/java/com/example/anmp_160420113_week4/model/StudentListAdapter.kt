@@ -9,6 +9,8 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.anmp_160420113_week4.R
 import com.example.anmp_160420113_week4.view.StudentListFragmentDirections
+import android.widget.ImageView
+import com.squareup.picasso.Picasso
 
 class StudentListAdapter(
     val students: ArrayList<Student>, ) : RecyclerView.Adapter<StudentListAdapter.ViewHolder>() {
@@ -17,12 +19,13 @@ class StudentListAdapter(
         val txtID: TextView
         val txtName: TextView
         val btnDetail: Button
+        val imagePhoto: ImageView
 
         init {
             txtID = view.findViewById(R.id.textID)
             txtName = view.findViewById(R.id.txtName)
             btnDetail  = view.findViewById(R.id.btnDetail)
-
+            imagePhoto = view.findViewById(R.id.imageProfile)
             //view.findViewById<Button>(R.id.btnDetail).setOnClickListener {
                 //onButtonOpenDetailClick(adapterPosition)
             //}

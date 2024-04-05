@@ -9,6 +9,12 @@ import androidx.fragment.app.viewModels
 import com.example.anmp_160420113_week4.R
 import com.google.android.material.textfield.TextInputEditText
 import com.example.anmp_160420113_week4.viewmodel.StudentDetailViewModel
+import android.util.Log
+import android.widget.Button
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,10 +39,19 @@ class StudentDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        observeViewModel()
-
-        studentDetailViewModel.fetch()
+        view.findViewById<Button>(R.id.buttonSaveChanges).setOnClickListener {
+            Observable.timer(1, TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    Log.d("Observable", it.toString())
+                    MainActivity.postNotification(
+                        "Changes saved successfully",
+                        "Student data changes saved",
+                        R.drawable.round_save_24,
+                    )
+                }
+        }
     }
 
     private fun observeViewModel() {
