@@ -9,3 +9,15 @@ data class Student(
     @SerializedName("phone") val phoneNumber: String?,
     @SerializedName("photo_url") val photoUrl: String?,
 )
+
+data class Car(
+    val model:String?,
+    val year:String?,
+    val features:List<String>?,
+    val specs:CarSpecification?,
+)
+data class CarSpecification(
+    val engine:String?,
+    val transmission:String?,
+    val fuelType:String?,
+)
