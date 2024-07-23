@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_student_list" >
         <action
             android:id="@+id/actionDetailFragment"
-            app:destination="@id/studentDetailFragment" />
+            app:destination="@id/studentDetailFragment">
+            <argument
+                android:name="student"
+                app:argType="com.example.anmp_160420113_week4.model.Student" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/studentDetailFragment"

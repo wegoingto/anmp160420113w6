@@ -4,36 +4,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.anmp_160420113_week4.R
+import com.example.anmp_160420113_week4.databinding.StudentListItemBinding
 import com.example.anmp_160420113_week4.view.StudentListFragmentDirections
-import android.widget.ImageView
-import com.squareup.picasso.Picasso
+import com.google.android.material.textfield.TextInputEditText
 
 class StudentListAdapter(
     val students: ArrayList<Student>, ) : RecyclerView.Adapter<StudentListAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val txtID: TextView
-        val txtName: TextView
-        val btnDetail: Button
-        val imagePhoto: ImageView
+    class ViewHolder(var view: StudentListItemBinding) : RecyclerView.ViewHolder(view.root)
 
-        init {
-            txtID = view.findViewById(R.id.textID)
-            txtName = view.findViewById(R.id.txtName)
-            btnDetail  = view.findViewById(R.id.btnDetail)
-            imagePhoto = view.findViewById(R.id.imageProfile)
-            //view.findViewById<Button>(R.id.btnDetail).setOnClickListener {
-                //onButtonOpenDetailClick(adapterPosition)
-            //}
-        }
-    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.student_list_item, parent, false)
+        val view = StudentListItemBinding.inflate(inflater, parent, false)
         return ViewHolder(view)
     }
 
@@ -42,17 +31,17 @@ class StudentListAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val txtID = holder.itemView.findViewById<TextView>(R.id.txtID)
-        val txtName = holder.itemView.findViewById<TextView>(R.id.txtName)
-        val btnDetail = holder.itemView.findViewById<Button>(R.id.btnDetail)
-
-        txtID.text = students[position].id
-        txtName.text = students[position].fullName
-        btnDetail.setOnClickListener {
-            val action = StudentListFragmentDirections.actionDetailFragment()
+        holder.view.student = students[position]
+        Glide.with(holder.view.imageProfile.context)
+            .load(students[position].photoUrl)
+            .into(holder.view.imageProfile)
+        holder.view.btnDetail.setOnClickListener {
+            val student = students[position]
+            val action = StudentListFragmentDirections.actionDetailFragment(student)
             Navigation.findNavController(it).navigate(action)
         }
     }
+
     fun updateStudent(newStudentList:ArrayList<Student>) {
         students.clear()
         students.addAll(newStudentList)

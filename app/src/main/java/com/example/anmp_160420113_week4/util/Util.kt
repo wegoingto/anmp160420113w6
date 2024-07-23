@@ -21,3 +21,7 @@ fun createNotificationChannel(
     context.getSystemService(NotificationManager::class.java)
         .createNotificationChannel(channel)
 }
+
+interface OnClick {
+    fun onSaveClicked()
+}
